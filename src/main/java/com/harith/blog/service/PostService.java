@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.harith.blog.payload.PostDto;
+import com.harith.blog.payload.PostResponse;
 
 public interface PostService {
 
@@ -13,11 +14,11 @@ public interface PostService {
 	
 	void deletePost(Integer postId);
 	
-	List<PostDto> getAllPosts(Integer pageNumber, Integer pageSize);
+	PostResponse getAllPosts(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
 	
-	List<PostDto> getAllPostByCategory(Integer categoryId);
+	PostResponse getAllPostByCategory(Integer categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
 	
-	List<PostDto> getAllPostByUser(Integer userId);
+	PostResponse getAllPostByUser(Integer userId, Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
 	
 	List<PostDto> searchAllPosts(String keyword);
 
