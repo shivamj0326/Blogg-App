@@ -1,5 +1,8 @@
 package com.harith.blog.payload;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +12,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.harith.blog.entity.Role;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,8 +38,11 @@ public class UserDto {
 	
 	@NotEmpty
 	@Size(min = 6, max = 12, message = "Password must be minimum of 6 characters and maximum of 6 characters")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	
 	@NotEmpty
 	private String about;
+	
+	private Set<RoleDto> roles = new HashSet<>();
 }
